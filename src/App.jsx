@@ -1,5 +1,6 @@
-import { Button, ConfigProvider, DatePicker } from 'antd'
+import {  ConfigProvider } from 'antd'
 import './App.css'
+import LayoutComponent from './components/Layout/index.jsx'
 
 function App() {
 
@@ -11,8 +12,8 @@ function App() {
       }
     }}
     >
-      <DatePicker/>
-      <Button type="primary">Primary Button</Button>
+      
+      <LayoutComponent></LayoutComponent>
     </ConfigProvider>
   )
 }
