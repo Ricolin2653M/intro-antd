@@ -1,7 +1,7 @@
-const Login = () => {
+const Home = () => {
     return (
-        <h1>Login</h1>
+        <h1>Home</h1>
     );
 }
 
-export default Login;
+export default Home;

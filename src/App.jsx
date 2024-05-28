@@ -15,7 +15,7 @@ function App() {
       }}
     >
       <BrowserRouter>
-        <AppRoutes></AppRoutes>
+        <AppRoutes />
       </BrowserRouter>
     </ConfigProvider>
   )
