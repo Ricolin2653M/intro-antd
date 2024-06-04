@@ -39,7 +39,7 @@ const FormLogin = () => {
     return (
         <>
             <Card
-                title="Bienvenido de nuevo!"
+                title="Bienvenido de nuevooo"
                 bordered={false}
                 className='responsive-card'
             >
