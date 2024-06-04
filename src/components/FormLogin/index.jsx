@@ -10,8 +10,12 @@ import './FormLogin.css'
 
 const FormLogin = () => {
 
+    
+
     const useAuthData = useAuth();
     console.log(useAuthData);
+
+    const { login } = useAuthData
 
     const navigate = useNavigate();
 
@@ -28,7 +32,8 @@ const FormLogin = () => {
             if (response && response.data) {
                 //console.log('Inicio de sesión exitoso:', response.data);
                 localStorage.setItem('token', response.data.token); //Guarda el token en el almacenamiento local
-                console.log(response.data.token);
+                login(response.data.token);
+                //console.log(response.data.token);
                 navigate('/'); //Redirige al usuario a la pagina principal
             } else {
                 console.error('Error en el inicio de sesión: Respuesta inesperada');
