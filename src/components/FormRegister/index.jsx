@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { Form, Input, Button, Card } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import authService from '../../services/auth';
+import { validatePassword } from '../../utils/validation.js';
 import './FormRegister.css'
 
 const FormRegister = () => {
@@ -16,25 +18,16 @@ const FormRegister = () => {
     const onFinish = async (values) => {
         setLoading(true);
         try {
-            const response = await axios.post('https://proyecto-three-phi.vercel.app/api/auth/signup', {
-                username: values.username,
-                email: values.email,
-                password: values.password,
-                roles: ['operator']
-            });
-            console.log('Registro exitoso: ', response.data);
+            await authService.register(values.username, values.email, values.password)
+            console.log('Registro exitoso: ');
             navigate('/login');
         } catch (error) {
-            if (error.response) {
-                console.error('Error en el registro:', error.response.data);
-            } else {
-                console.error('Error en el regis:', error.message);
-            }
+            console.error('Error en el registro:', error.response.data);
             setRegisterError(true);
         } finally {
             setLoading(false);
         }
-        console.log('Success: ', values);
+        //console.log('Success: ', values);
     }
     const onFinishFailed = (errorInfo) => {
         console.log('Failed: ', errorInfo);

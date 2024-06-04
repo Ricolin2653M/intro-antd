@@ -1,4 +1,3 @@
-import React from 'react';
 import LayoutComponent from '../../Layout/index.jsx'
 import FormLogin from '../../FormLogin/index.jsx';
 import ImageLogin from '../../img/imageLogin.jsx';

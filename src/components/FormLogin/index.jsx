@@ -1,11 +1,17 @@
-import  { useState } from 'react';
-import { Form, Input, Button, Card  } from 'antd'
+import { useState } from 'react';
+import { Form, Input, Button, Card } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import authService from '../../services/auth';
+import { useAuth } from '../../hooks/useAuth';
+
 import './FormLogin.css'
 
 const FormLogin = () => {
+
+    const useAuthData = useAuth();
+    console.log(useAuthData);
 
     const navigate = useNavigate();
 
@@ -16,14 +22,19 @@ const FormLogin = () => {
 
     const onFinish = async (values) => {
         setLoading(true); //Establece elestadode carga a true al enviar el formulario
+        setLoginError(false);
         try {
-            const response = await axios.post('https://proyecto-three-phi.vercel.app/api/auth/signin', {
-                email: values.username, //Para este caso, el email actúa como el nombre de usuario
-                password: values.password
-            });
-            console.log('Inicio de sesión exitoso:', response.data);
-            localStorage.setItem('token', response.data.token); //Guarda el token en el almacenamiento local
-            navigate('/'); //Redirige al usuario a la pagina principal
+            const response = await authService.loginF(values.username, values.password);
+            if (response && response.data) {
+                //console.log('Inicio de sesión exitoso:', response.data);
+                localStorage.setItem('token', response.data.token); //Guarda el token en el almacenamiento local
+                console.log(response.data.token);
+                navigate('/'); //Redirige al usuario a la pagina principal
+            } else {
+                console.error('Error en el inicio de sesión: Respuesta inesperada');
+                setLoginError(true);
+            }
+
         } catch (error) {
             console.log('Error en el inicio de sesión: ', error.response.data);
             setLoginError(true);
@@ -39,7 +50,7 @@ const FormLogin = () => {
     return (
         <>
             <Card
-                title="Bienvenido de nuevooo"
+                title="Bienvenido de nuevo"
                 bordered={false}
                 className='responsive-card'
             >
@@ -71,7 +82,7 @@ const FormLogin = () => {
                         <Input.Password prefix={<LockOutlined />} placeholder='Contraseña' />
                     </Form.Item>
                     <Form.Item>
-                        {loginError && <p style={{ color: 'red' }}>Credenciales incorrectas.<br/> Inténtalo de nuevo</p>}
+                        {loginError && <p style={{ color: 'red' }}>Credenciales incorrectas.<br /> Inténtalo de nuevo</p>}
                         <Button type="primary" htmlType="submit" className="login-form-button" loading={loading}>
                             Iniciar sesión
                         </Button>
