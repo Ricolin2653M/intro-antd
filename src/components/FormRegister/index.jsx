@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { Form, Input, Button, Card } from 'antd'
@@ -16,17 +16,17 @@ const FormRegister = () => {
     const onFinish = async (values) => {
         setLoading(true);
         try {
-            const response = await axios.post('https://lizard-server.vercel.app/api/auth/signup', {
+            const response = await axios.post('https://proyecto-three-phi.vercel.app/api/auth/signup', {
                 username: values.username,
                 email: values.email,
                 password: values.password,
-                roles: ['user']
+                roles: ['operator']
             });
             console.log('Registro exitoso: ', response.data);
-            navigate('login');
+            navigate('/login');
         } catch (error) {
             if (error.response) {
-                console.error('Error en el regis:', error.response.data);
+                console.error('Error en el registro:', error.response.data);
             } else {
                 console.error('Error en el regis:', error.message);
             }

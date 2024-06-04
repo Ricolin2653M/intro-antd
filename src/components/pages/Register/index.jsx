@@ -3,7 +3,7 @@ import LayoutComponent from '../../Layout/index.jsx'
 import FormRegister from '../../FormRegister/index.jsx';
 import ImageLogin from '../../img/imageLogin.jsx';
 
-const Login = () => {
+const Register = () => {
     return (
         <LayoutComponent
 
@@ -15,4 +15,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default Register;

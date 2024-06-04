@@ -1,4 +1,3 @@
-import React from 'react';
 import { Col, Row } from 'antd';
 import './Layout.css';
 
@@ -11,7 +10,7 @@ const LayoutComponent = ({leftColSize, rightColSize, leftContent, rigthContent})
                         {leftContent}
                     </div>
                 </Col>
-                <Col xs={rightColSize.xs} sm={rightColSize.sm} md={rightColSize.md} lg={rightColSize.xs}>
+                <Col xs={rightColSize.xs} sm={rightColSize.sm} md={rightColSize.md} lg={rightColSize.lg}>
                     <div className="content-rigth">
                         {rigthContent}
                     </div>
