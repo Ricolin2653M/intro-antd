@@ -9,9 +9,6 @@ import { useAuth } from '../../hooks/useAuth';
 import './FormLogin.css'
 
 const FormLogin = () => {
-
-    
-
     const useAuthData = useAuth();
     console.log(useAuthData);
 

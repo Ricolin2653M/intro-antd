@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios';
 import { Form, Input, Button, Card } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import authService from '../../services/auth';
-import { validatePassword } from '../../utils/validation.js';
 import './FormRegister.css'
 
 const FormRegister = () => {
