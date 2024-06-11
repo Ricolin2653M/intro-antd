@@ -16,7 +16,7 @@ const FormRegister = () => {
     const onFinish = async (values) => {
         setLoading(true);
         try {
-            await authService.register(values.username, values.email, values.password)
+            await authService.register(values.readername, values.email, values.password)
             console.log('Registro exitoso: ');
             navigate('/login');
         } catch (error) {
@@ -56,7 +56,7 @@ const FormRegister = () => {
                     onFinishFailed={onFinishFailed}
                 >
                     <Form.Item
-                        name="username"
+                        name="readername"
                         rules={[{
                             required: true,
                             message: 'Por favor ingrese su usuario'

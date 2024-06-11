@@ -1,9 +1,9 @@
 import axios from "axios";
 import { ENV } from "../utils/constants";
 
-const register = async (username, email, password) => {
+const register = async (readername, email, password) => {
     return axios.post(`${ENV.API_URL}/${ENV.ENDPOINTS.REGISTER}`, {
-        username,
+        readername,
         email,
         password,
         roles: ['CommonReader'],
