@@ -6,7 +6,7 @@ const register = async (username, email, password) => {
         username,
         email,
         password,
-        roles: ['operator'],
+        roles: ['CommonReader'],
     });
 };
 
