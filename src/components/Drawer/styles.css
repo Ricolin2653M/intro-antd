@@ -7,19 +7,26 @@
 
 .info-section {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #f0f0f0;
 }
 
+.info-icon {
+    margin-right: 8px;
+    color: #31274f;
+    font-size: 16px;
+}
+
 .info-label {
     font-weight: bold;
-    color: #555;
+    color: #31274f;
+    margin-right: 8px;
 }
 
 .info-value {
     color: #888;
+    margin-left: auto; /* Mueve el valor al extremo derecho */
 }
 
 .drawer-content .logout-button.ant-btn {
