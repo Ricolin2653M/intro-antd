@@ -1,17 +1,21 @@
-import React, { useState} from 'react';
-import { Drawer, Avatar, Button } from 'antd';
+import React, { useState } from 'react';
+import { Drawer, Avatar, Button} from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { useAuth } from '../../hooks/useAuth';
+import './styles.css';
 
 const DrawerComponent = () => {
-    const {user, logout} = useAuth();
-    const  [open, setOpen] = useState(false);
+    const { user, logout } = useAuth();
+    const [open, setOpen] = useState(false);
+
     const showDrawer = () => {
         setOpen(true);
     };
+
     const onClose = () => {
         setOpen(false);
     };
+
     return (
         <>
             <Avatar
@@ -20,11 +24,18 @@ const DrawerComponent = () => {
                 style={{ backgroundColor:'#87d068', cursor:'pointer'}}
                 icon={<UserOutlined />}
             />
-            <Drawer title={user.readerFound.readername} onClose={onClose} open={open}>
-                <p style={{ color: 'black' }}>Correo: {user.readerFound.email}</p>
-                <p style={{ color: 'black' }}>Some contents....</p>
-                <p style={{ color: 'black' }}>Some contents....</p>
-                <Button onClick={()=>logout()}>Cerrar sesion</Button>
+            <Drawer title="Perfil" onClose={onClose} open={open}>
+                <div className="drawer-content">
+                    <div className="info-section">
+                        <p className="info-label">Usuario:</p>
+                        <p className="info-value">{user.readerFound.readername}</p>
+                    </div>
+                    <div className="info-section">
+                        <p className="info-label">Correo:</p>
+                        <p className="info-value">{user.readerFound.email}</p>
+                    </div>
+                    <Button className="logout-button" onClick={logout}>Cerrar sesión</Button>
+                </div>
             </Drawer>
         </>
     );
