@@ -26,7 +26,7 @@
 
 .info-value {
     color: #888;
-    margin-left: auto; /* Mueve el valor al extremo derecho */
+    margin-left: auto;
 }
 
 .drawer-content .logout-button.ant-btn {
@@ -38,4 +38,22 @@
 .drawer-content .logout-button.ant-btn:hover {
     background-color: #ff4d4f;
     color: white;
+}
+
+.drawer-content .edit-button.ant-btn {
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.drawer-content .edit-button.ant-btn:hover {
+    background-color: #1890ff;
+    color: white;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
 }

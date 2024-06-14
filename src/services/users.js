@@ -15,6 +15,18 @@ const getMe = async (token) => {
     }
 }
 
+const updatePassword = async (token) => {
+    try {
+        const decode = jwtDecode(token)
+        const userId = decode.id
+        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.UPDATEPASSWORD}/${userId}`;
+        //const response = await ();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const usersService = {
-    getMe
+    getMe,
+    updatePassword
 }
