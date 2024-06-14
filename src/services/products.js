@@ -11,3 +11,21 @@ export const getProducts = async () => {
 		throw error;
 	}
 }
+
+const addNewP = async (name, author, editorial, pages, price, year, genre, review) => {
+    return axios.post(`${ENV.API_URL}/${ENV.ENDPOINTS.NEWPRODUCTS}`, {
+        name,
+        author,
+        editorial,
+		pages,
+		price,
+		year,
+		genre,
+		review
+    });
+};
+
+export default {
+    getProducts,
+    addNewP,
+};

@@ -3,6 +3,7 @@ import { getProducts } from '../../../services/products';
 import { useEffect } from 'react';
 import Nav from '../../Nav/index';
 import { useState } from 'react';
+import NewProd from '../NewProd';
 
 const columns = [
     {
@@ -54,6 +55,7 @@ const Productos = () => {
     return (
         <div>
             <Nav/>
+            <a href="/NewLibro">Libros</a>
             <div className="products-container">
                 <Table
                 rowSelection={{
