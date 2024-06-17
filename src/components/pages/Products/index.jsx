@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Divider, Table, Button, Space, Modal, notification } from 'antd';
 import { BookOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import ProductService from '../../../services/products'; // Asegúrate de importar tu servicio correctamente
+import { useNavigate } from 'react-router-dom';
+import ProductService from '../../../services/products'; 
 import Nav from '../../Nav/index';
 import { useAuth } from '../../../hooks/useAuth';
 import './styles.css';
 
 const Productos = () => {
     const { user } = useAuth();
+    const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [selectionType, setSelectionType] = useState('checkbox');
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -84,7 +86,7 @@ const Productos = () => {
     }, []);
 
     const handleEdit = (record) => {
-        console.log('Editar:', record);
+        navigate(`/editLibro/${record._id}`);
     };
 
     const handleDelete = async (record) => {

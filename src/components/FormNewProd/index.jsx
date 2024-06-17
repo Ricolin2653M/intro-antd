@@ -55,7 +55,7 @@ const FormNewP = () => {
         <div className="container">
             <Nav />
             <Card
-                title="Agregar nuevo producto"
+                title="Agregar nuevo libro"
                 bordered={false}
                 className='responsive-card'
             >
