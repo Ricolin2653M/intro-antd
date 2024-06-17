@@ -25,7 +25,18 @@ const addNewP = async (name, author, editorial, pages, price, year, genre, revie
     });
 };
 
+const deleteProduct = async (productId) => {
+    try {
+        const response = await axios.delete(`${ENV.API_URL}/${ENV.ENDPOINTS.DELETEBOOKS}/${productId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error al eliminar el producto:', error);
+        throw error;
+    }
+};
+
 export default {
     getProducts,
     addNewP,
+	deleteProduct,
 };

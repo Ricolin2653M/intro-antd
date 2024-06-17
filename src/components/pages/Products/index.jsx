@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Divider, Table, Button, Space, Modal } from 'antd';
+import { Divider, Table, Button, Space, Modal, notification } from 'antd';
 import { BookOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import { getProducts } from '../../../services/products';
+import ProductService from '../../../services/products'; // Asegúrate de importar tu servicio correctamente
 import Nav from '../../Nav/index';
 import { useAuth } from '../../../hooks/useAuth';
 import './styles.css';
 
 const Productos = () => {
-    const { user, logout } = useAuth();
+    const { user } = useAuth();
     const [products, setProducts] = useState([]);
     const [selectionType, setSelectionType] = useState('checkbox');
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -70,7 +70,7 @@ const Productos = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const data = await getProducts();
+                const data = await ProductService.getProducts();
                 const productsWithKey = data.map(product => ({
                     ...product,
                     key: product._id,
@@ -87,10 +87,24 @@ const Productos = () => {
         console.log('Editar:', record);
     };
 
-    const handleDelete = (record) => {
-        console.log('Eliminar:', record);
-        // Aquí iría el código para eliminar el producto
-        setProducts(products.filter(product => product._id !== record._id));
+    const handleDelete = async (record) => {
+        try {
+            await ProductService.deleteProduct(record._id);
+            setProducts(products.filter(product => product._id !== record._id));
+            notification.success({
+                message: 'Éxito',
+                description: 'El libro ha sido eliminado correctamente.',
+            });
+        } catch (error) {
+            console.error('Error al eliminar el producto:', error);
+            notification.error({
+                message: 'Error',
+                description: 'Hubo un problema al eliminar el libro. Por favor, inténtalo de nuevo.',
+            });
+        } finally {
+            setIsModalVisible(false);
+            setSelectedRecord(null);
+        }
     };
 
     const showDeleteConfirm = (record) => {
@@ -100,8 +114,6 @@ const Productos = () => {
 
     const handleOk = () => {
         handleDelete(selectedRecord);
-        setIsModalVisible(false);
-        setSelectedRecord(null);
     };
 
     const handleCancel = () => {
