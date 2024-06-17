@@ -12,7 +12,6 @@ const AppRoutes = () => {
         { path: '/', element: user ? <Home /> : <Login/> },
         { path: '/register', element: <Register /> },
         { path: '/login', element: <Login /> },
-        { path: '/Libros', element: <Productos /> }
         { path: '/Libros', element: <Productos /> },
         { path: '/NewLibro', element: <NewP /> }
     ]);
