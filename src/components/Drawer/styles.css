@@ -29,17 +29,6 @@
     margin-left: auto;
 }
 
-.drawer-content .logout-button.ant-btn {
-    width: 100%;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-}
-
-.drawer-content .logout-button.ant-btn:hover {
-    background-color: #ff4d4f;
-    color: white;
-}
-
 .drawer-content .edit-button.ant-btn {
     width: 100%;
     margin-top: 10px;
@@ -47,7 +36,20 @@
 }
 
 .drawer-content .edit-button.ant-btn:hover {
-    background-color: #1890ff;
+    background-color: #4dbbff;
+    border-color: #4dbbff;
+    color: white;
+}
+
+.drawer-content .logout-button.ant-btn{
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.drawer-content .logout-button.ant-btn:hover {
+    background-color: #ff4d4f;
+    border-color: #ff4d4f;
     color: white;
 }
 

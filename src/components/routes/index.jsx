@@ -5,6 +5,7 @@ import NewP from '../pages/NewProd/index.jsx';
 import Register from '../pages/Register/index.jsx';
 import { useAuth } from '../../hooks/useAuth.js';
 import Productos from '../pages/Products/index.jsx';
+import FormNewP from '../FormNewProd/index.jsx';
 
 const AppRoutes = () => {
     const { user } = useAuth();
@@ -13,7 +14,8 @@ const AppRoutes = () => {
         { path: '/register', element: <Register /> },
         { path: '/login', element: <Login /> },
         { path: '/Libros', element: <Productos /> },
-        { path: '/NewLibro', element: <NewP /> }
+        { path: '/NewLibro', element: <NewP /> },
+        { path: '/nuevoLibro', element: <FormNewP />}
     ]);
 
     return routes;
