@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { Drawer, Avatar, Button, Modal, Input, Form } from 'antd';
-import { UserOutlined, MailOutlined, LogoutOutlined } from '@ant-design/icons';
+import { UserOutlined, MailOutlined, LogoutOutlined, LockOutlined } from '@ant-design/icons';
 import { useAuth } from '../../hooks/useAuth';
 import './styles.css';
 import { Link } from 'react-router-dom';
-import { LockOutlined } from '@ant-design/icons'
-import authService from '../../services/auth';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { usersService } from '../../services/users';
 
 const DrawerComponent = () => {
     const navigate = useNavigate();
-
     const { user, logout } = useAuth();
     const [open, setOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,11 +27,6 @@ const DrawerComponent = () => {
         setIsModalOpen(true);
     };
 
-    const handleOk = () => {
-        //
-        setIsModalOpen(false);
-    };
-
     const handleCancel = () => {
         setIsModalOpen(false);
     };
@@ -50,22 +43,21 @@ const DrawerComponent = () => {
     const onFinish = async (values) => {
         setLoading(true);
         try {
-            await authService.register(values.readername, values.email, values.password)
-            console.log('Registro exitoso: ');
+            await usersService.updatePassword(user.readerFound._id, values.password);
+            console.log('Cambio exitoso: ');
             navigate('/');
         } catch (error) {
-            console.error('Error en el registro:', error.response.data);
+            console.error('Error al actualizar contraseña:', error);
             setPasswordError(true);
         } finally {
             setLoading(false);
         }
-        //console.log('Success: ', values);
-    }
+    };
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed: ', errorInfo);
         setPasswordError(true);
-    }
+    };
 
     return (
         <>
@@ -95,11 +87,11 @@ const DrawerComponent = () => {
                             </Button>
                         </div>
                     </Drawer>
-                    <Modal title="Editar Contraseña" visible={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                    <Modal title="Editar Contraseña" visible={isModalOpen} onOk={() => setIsModalOpen(false)} onCancel={handleCancel}>
                         <div className="modal-content">
                             <Form
-                                name='change_password'
-                                className='password-form'
+                                name="change_password"
+                                className="password-form"
                                 initialValues={{}}
                                 onFinish={onFinish}
                                 onFinishFailed={onFinishFailed}
@@ -111,32 +103,31 @@ const DrawerComponent = () => {
                                         message: 'Por favor ingrese su contraseña'
                                     }]}
                                 >
-                                    <Input.Password prefix={<LockOutlined className='site-form-item-icon' />} placeholder='Contraseña' />
+                                    <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Contraseña" />
                                 </Form.Item>
-
                                 <Form.Item
                                     name="password-repet"
                                     rules={[{
                                         required: true,
                                         message: 'Por favor repita su contraseña'
-                                    },
-                                    ({ getFieldValue }) => validatePassword({ getFieldValue }),
-                                    ]}
+                                    }, ({ getFieldValue }) => validatePassword({ getFieldValue })]}
                                 >
-                                    <Input.Password prefix={<LockOutlined className='site-form-item-icon' />} placeholder='Contraseña' />
+                                    <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Contraseña" />
+                                </Form.Item>
+                                <Form.Item>
+                                    <Button type="primary" htmlType="submit" className="login-form-button" loading={loading}>
+                                        Guardar
+                                    </Button>
                                 </Form.Item>
                             </Form>
                         </div>
                     </Modal>
-
                 </>
             ) : (
                 <Link to="/login">
                     <Button type="primary">Iniciar Sesión</Button>
                 </Link>
             )}
-
-
         </>
     );
 };
