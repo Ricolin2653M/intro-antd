@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Drawer, Avatar, Button, Modal, Input, Form } from 'antd';
+import { Drawer, Avatar, Button, Modal, Input, Form, notification } from 'antd';
 import { UserOutlined, MailOutlined, LogoutOutlined, LockOutlined } from '@ant-design/icons';
 import { useAuth } from '../../hooks/useAuth';
 import './styles.css';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { usersService } from '../../services/users';
 
 const DrawerComponent = () => {
@@ -13,7 +12,7 @@ const DrawerComponent = () => {
     const [open, setOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
+    const [form] = Form.useForm();
 
     const showDrawer = () => {
         setOpen(true);
@@ -28,6 +27,7 @@ const DrawerComponent = () => {
     };
 
     const handleCancel = () => {
+        form.resetFields();
         setIsModalOpen(false);
     };
 
@@ -44,19 +44,22 @@ const DrawerComponent = () => {
         setLoading(true);
         try {
             await usersService.updatePassword(user.readerFound._id, values.password);
-            console.log('Cambio exitoso: ');
+            notification.success({
+                message: 'Cambio exitoso',
+                description: 'La contraseña se ha actualizado correctamente.',
+            });
+            form.resetFields(); 
+            setIsModalOpen(false);
             navigate('/');
         } catch (error) {
             console.error('Error al actualizar contraseña:', error);
-            setPasswordError(true);
+            notification.error({
+                message: 'Error al actualizar contraseña',
+                description: 'Hubo un problema al intentar actualizar la contraseña.',
+            });
         } finally {
             setLoading(false);
         }
-    };
-
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed: ', errorInfo);
-        setPasswordError(true);
     };
 
     return (
@@ -87,14 +90,20 @@ const DrawerComponent = () => {
                             </Button>
                         </div>
                     </Drawer>
-                    <Modal title="Editar Contraseña" visible={isModalOpen} onOk={() => setIsModalOpen(false)} onCancel={handleCancel}>
+                    <Modal
+                        title="Editar Contraseña"
+                        visible={isModalOpen}
+                        onOk={() => form.submit()}
+                        onCancel={handleCancel}
+                        confirmLoading={loading}
+                    >
                         <div className="modal-content">
                             <Form
+                                form={form}
                                 name="change_password"
                                 className="password-form"
                                 initialValues={{}}
                                 onFinish={onFinish}
-                                onFinishFailed={onFinishFailed}
                             >
                                 <Form.Item
                                     name="password"
@@ -113,11 +122,6 @@ const DrawerComponent = () => {
                                     }, ({ getFieldValue }) => validatePassword({ getFieldValue })]}
                                 >
                                     <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Contraseña" />
-                                </Form.Item>
-                                <Form.Item>
-                                    <Button type="primary" htmlType="submit" className="login-form-button" loading={loading}>
-                                        Guardar
-                                    </Button>
                                 </Form.Item>
                             </Form>
                         </div>
