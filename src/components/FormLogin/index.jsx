@@ -59,15 +59,9 @@ const FormLogin = () => {
                 <Form
                     name="normal_login"
                     className="login-form"
-<<<<<<< HEAD
                     initialValues={{
                         remember: false,
                     }}
-=======
-                    /*initialValues={{
-                        remember: true,
-                    }}*/
->>>>>>> 6b33084b80827922bc18f9e01911a3ee3cb5937e
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                 >
