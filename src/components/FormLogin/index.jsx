@@ -60,7 +60,7 @@ const FormLogin = () => {
                     name="normal_login"
                     className="login-form"
                     initialValues={{
-                        remember: true,
+                        remember: false,
                     }}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}

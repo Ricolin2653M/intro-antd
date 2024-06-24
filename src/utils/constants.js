@@ -5,7 +5,7 @@ export const ENV = {
         REGISTER: 'getin/signup',
         USER: 'getin/obtenerusuario',
         PRODUCTS: 'books',
-        UPDATEPASSWORD: 'getin/updateUserById',
+        UPDATEUSER: 'getin/updateUserById',
         NEWPRODUCTS: 'books',
         UPDATEBOOKS: 'books',
         DELETEBOOKS: 'books'
