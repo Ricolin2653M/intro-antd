@@ -1,22 +1,20 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
-import { Form, Input, Button, Card } from 'antd'
-import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { useNavigate } from 'react-router-dom';
+import { Form, Input, Button, Card } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import authService from '../../services/auth';
-import './FormRegister.css'
+import './FormRegister.css';
 
 const FormRegister = () => {
     const navigate = useNavigate();
 
-    //Estado de error de registro
     const [registerError, setRegisterError] = useState(false);
-    //Estado de carga
     const [loading, setLoading] = useState(false);
 
     const onFinish = async (values) => {
         setLoading(true);
         try {
-            await authService.register(values.readername, values.email, values.password)
+            await authService.register(values.readername, values.email, values.password);
             console.log('Registro exitoso: ');
             navigate('/login');
         } catch (error) {
@@ -25,12 +23,13 @@ const FormRegister = () => {
         } finally {
             setLoading(false);
         }
-        //console.log('Success: ', values);
     }
+
     const onFinishFailed = (errorInfo) => {
         console.log('Failed: ', errorInfo);
         setRegisterError(true);
     }
+
     const validatePassword = ({ getFieldValue }) => ({
         validator(_, value) {
             if (!value || getFieldValue('password') === value) {
@@ -39,19 +38,20 @@ const FormRegister = () => {
             return Promise.reject(new Error('Las contraseñas no coinciden'));
         },
     });
+
     return (
-        <>
+        <div className="register-container">
             <Card
-                title="Registro!"
+                title="Registro"
                 bordered={false}
                 className='responsive-card'
             >
                 <Form
                     name="normal_register"
                     className="register-form"
-                    initialValues={{
+                    /*initialValues={{
                         remember: true,
-                    }}
+                    }}*/
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                 >
@@ -91,18 +91,19 @@ const FormRegister = () => {
                         ({ getFieldValue }) => validatePassword({ getFieldValue }),
                         ]}
                     >
-                        <Input.Password prefix={<LockOutlined className='site-form-item-icon' />} placeholder='Contraseña' />
+                        <Input.Password prefix={<LockOutlined className='site-form-item-icon' />} placeholder='Confirmar Contraseña' />
                     </Form.Item>
 
                     <Form.Item>
                         {registerError && <p style={{ color: 'red' }}>Falló el registro</p>}
-                        <Button type="primary" htmlType="submit" className="login-form-button" loading={loading}>
+                        <Button type="primary" htmlType="submit" className="register-form-button" loading={loading}>
                             Registrar
                         </Button>
                     </Form.Item>
+                    ¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a>
                 </Form>
             </Card>
-        </>
+        </div>
     );
 }
 

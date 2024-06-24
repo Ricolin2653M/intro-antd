@@ -1,16 +1,41 @@
 .container {
-    background-color: #5bdfc9;
-    min-height: 100vh; /* Asegura que el contenedor ocupa toda la altura de la pantalla */
+    background-image: linear-gradient(180deg, rgba(43, 112, 133, 0.9) 0%, rgba(99, 110, 114, 0.9) 100%), url("../../assets/img/back.png");
+    min-height: 100vh; 
+    animation: gradientAnimation 15s ease infinite;
     justify-content: center;
     align-items: center;
 }
 
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 .responsive-card {
-    width: 100%;
-    max-width: 600px;
-    background-color: #ffffff;
+    width: 90%;
+    max-width: 500px; 
+    background-color: rgba(39, 81, 91, 0.9); 
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: auto; 
-    max-height: calc(100vh - 100px); 
+    max-height: 90vh; 
+    margin-top: 20px; 
+}
+
+.editProd-form {
+    padding: 4px;
+}
+
+.edit-form-button {
+    width: 100%;
+    background: rgb(166, 135, 202);
+}
+
+.ant-form-item {
+    margin-bottom: 5px;
+}
+
+.ant-input-number {
+    width: 100% !important;
 }

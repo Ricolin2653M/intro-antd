@@ -9,8 +9,8 @@ const Register = () => {
 
             leftColSize={{ xs: 0, sm: 0, md: 8, lg: 6 }}
             rightColSize={{ xs: 24, sm: 24, md: 16, lg: 18 }}
-            leftContent={<FormRegister />}
-            rigthContent={<ImageLogin />}
+            leftContent={<ImageLogin />}
+            rigthContent={<FormRegister />}
         />
     );
 }

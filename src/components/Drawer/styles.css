@@ -2,14 +2,23 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .info-section {
     display: flex;
-    align-items: center;
-    padding: 10px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 0;
     border-bottom: 1px solid #f0f0f0;
+}
+
+.info-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px; 
 }
 
 .info-icon {
@@ -29,22 +38,34 @@
     margin-left: auto;
 }
 
-.drawer-content .edit-button.ant-btn {
+.drawer-content .edit-button-username.ant-btn,
+.drawer-content .edit-button-email.ant-btn,
+.drawer-content .edit-button-password.ant-btn,
+.drawer-content .logout-button.ant-btn {
     width: 100%;
     margin-top: 10px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: white;
+    color: #31274f;
+    border-color: #d9d9d9;
 }
 
-.drawer-content .edit-button.ant-btn:hover {
+.drawer-content .edit-button-username.ant-btn:hover {
     background-color: #4dbbff;
     border-color: #4dbbff;
     color: white;
 }
 
-.drawer-content .logout-button.ant-btn{
-    width: 100%;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
+.drawer-content .edit-button-email.ant-btn:hover {
+    background-color: #ffd54d;
+    border-color: #ffd54d;
+    color: white;
+}
+
+.drawer-content .edit-button-password.ant-btn:hover {
+    background-color: #4caf50;
+    border-color: #4caf50;
+    color: white;
 }
 
 .drawer-content .logout-button.ant-btn:hover {
