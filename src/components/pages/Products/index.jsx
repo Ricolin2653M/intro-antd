@@ -19,30 +19,38 @@ const Productos = () => {
         {
             title: 'Nombre',
             dataIndex: 'name',
+            ellipsis: true,
         },
         {
             title: 'Autor',
             dataIndex: 'author',
+            ellipsis: true,
         },
         {
             title: 'Editorial',
             dataIndex: 'editorial',
+            ellipsis: true,
         },
         {
             title: 'Páginas',
             dataIndex: 'pages',
+            align: 'right',
         },
         {
             title: 'Precio',
             dataIndex: 'price',
+            align: 'right',
+            render: (price) => `$${price.toFixed(2)}`,
         },
         {
             title: 'Año',
             dataIndex: 'year',
+            align: 'center',
         },
         {
             title: 'Género',
             dataIndex: 'genre',
+            ellipsis: true,
         },
     ];
 
@@ -124,36 +132,40 @@ const Productos = () => {
     };
 
     return (
-        <div className='color-container'>
-            <Nav />
-            <div className="button-container">
-                {user ? (
-                    <Button className="add-button" icon={<BookOutlined />} href="/nuevoLibro">
-                        Agregar libro
-                    </Button>
-                ) : null}
+        <div className='page-container'>
+            <div className='color-container'>
+                <Nav />
+                <div className="button-container">
+                    {user ? (
+                        <Button className="add-button" icon={<BookOutlined />} href="/nuevoLibro">
+                            Agregar libro
+                        </Button>
+                    ) : null}
+                </div>
+                <div className="table-container">
+                    <Table
+                        rowSelection={{
+                            type: selectionType,
+                            ...rowSelection,
+                        }}
+                        columns={columns}
+                        dataSource={products}
+                         /*scroll={{ y: 400 }}*/
+                        pagination={{ pageSize: 5 }}
+                        className="custom-table"
+                    />
+                </div>
+                <Modal
+                    title="Confirmar eliminación"
+                    visible={isModalVisible}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                    okText="Eliminar"
+                    cancelText="Cancelar"
+                >
+                    <p>¿Estás seguro de que deseas eliminar el libro <strong>{selectedRecord?.name}</strong>?</p>
+                </Modal>
             </div>
-            <div className="table-container">
-                <Table
-                    rowSelection={{
-                        type: selectionType,
-                        ...rowSelection,
-                    }}
-                    columns={columns}
-                    dataSource={products}
-                    scroll={{ y: 315 }}
-                />
-            </div>
-            <Modal
-                title="Confirmar eliminación"
-                visible={isModalVisible}
-                onOk={handleOk}
-                onCancel={handleCancel}
-                okText="Eliminar"
-                cancelText="Cancelar"
-            >
-                <p>¿Estás seguro de que deseas eliminar el libro <strong>{selectedRecord?.name}</strong>?</p>
-            </Modal>
         </div>
     );
 }

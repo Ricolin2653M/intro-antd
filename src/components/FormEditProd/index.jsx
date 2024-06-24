@@ -78,15 +78,16 @@ const FormEditP = () => {
                 bordered={false}
                 className='responsive-card'
             >
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                {product ? (
-                    <Form
-                        name="edit_product"
-                        className="editProd-form"
-                        initialValues={product}
-                        onFinish={onFinish}
-                        onFinishFailed={onFinishFailed}
-                    >
+                <div className="editProd-form">
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                    {product ? (
+                        <Form
+                            name="edit_product"
+                            initialValues={product}
+                            onFinish={onFinish}
+                            onFinishFailed={onFinishFailed}
+                            layout="vertical" // Cambia el layout a vertical
+                        >
                         <Form.Item
                             name="name"
                             rules={[{
@@ -134,7 +135,7 @@ const FormEditP = () => {
                                 message: 'Por favor ingrese el precio'
                             }]}
                         >
-                            <InputNumber prefix={<DollarOutlined />} placeholder='Precio' style={{ width: '100%' }} />
+                            <InputNumber prefix={<DollarOutlined />} placeholder='Precio' style={{marginTop: '15px', width: '100%' }} />
                         </Form.Item>
 
                         <Form.Item
@@ -144,7 +145,7 @@ const FormEditP = () => {
                                 message: 'Por favor ingrese el año'
                             }]}
                         >
-                            <InputNumber prefix={<CalendarOutlined />} placeholder='Año' style={{ width: '100%' }} />
+                            <InputNumber prefix={<CalendarOutlined />} placeholder='Año' style={{marginTop: '15px', marginBottom: '15px', width: '100%' }} />
                         </Form.Item>
 
                         <Form.Item
@@ -176,9 +177,10 @@ const FormEditP = () => {
                 ) : (
                     <p>No se pudo cargar el producto.</p>
                 )}
-            </Card>
-        </div>
-    );
+            </div>
+        </Card>
+    </div>
+);
 };
 
 export default FormEditP;

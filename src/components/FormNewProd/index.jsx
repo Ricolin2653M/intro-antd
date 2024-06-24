@@ -115,7 +115,7 @@ const FormNewP = () => {
                             message: 'Por favor ingrese el precio'
                         }]}
                     >
-                        <InputNumber prefix={<DollarOutlined />} placeholder='Precio' style={{ width: '100%' }} />
+                        <InputNumber prefix={<DollarOutlined />} placeholder='Precio' style={{marginTop: '15px', width: '100%' }} />
                     </Form.Item>
 
                     <Form.Item
@@ -125,7 +125,7 @@ const FormNewP = () => {
                             message: 'Por favor ingrese el año'
                         }]}
                     >
-                        <InputNumber prefix={<CalendarOutlined />} placeholder='Año' style={{ width: '100%' }} />
+                        <InputNumber prefix={<CalendarOutlined />} placeholder='Año' style={{marginTop: '15px', marginBottom: '15px', width: '100%' }} />
                     </Form.Item>
 
                     <Form.Item
@@ -150,7 +150,7 @@ const FormNewP = () => {
                     
                     <Form.Item>
                         {loginError && <p style={{ color: 'red' }}>Error al agregar libro.<br /> Inténtalo de nuevo</p>}
-                        <Button type="primary" htmlType="submit" className="login-form-button" loading={loading}>
+                        <Button type="primary" htmlType="submit" className="add-form-button" loading={loading}>
                             Agregar
                         </Button>
                     </Form.Item>

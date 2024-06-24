@@ -1,39 +1,77 @@
-.button-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-    margin-right: 20px;
+.page-container {
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../assets/img/b2.jpg') no-repeat center center fixed;
+    
+}
+
+.color-container {
+    border-radius: 8px;
+    
+    flex: 1;
 }
 
 .table-container {
-    margin-top: 10px; 
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.custom-table {
+    background: transparent !important;    border-radius: 8px;
+}
+
+.custom-table .ant-table-thead > tr > th {
+    background-color: rgba(81, 103, 139, 0.8); /* Fondo semi-transparente para el header */
+    color: #333333;
+    font-weight: 600;
+}
+
+.custom-table .ant-table-tbody > tr > td {
+    padding: 16px 8px;
+}
+
+.custom-table .ant-table-tbody > tr:hover > td {
+    background-color: rgba(230, 247, 255, 0.8); /* Fondo semi-transparente al pasar el ratón por encima */
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 20px 0;
 }
 
 .add-button {
-    width: auto; 
-    background-color: #1b8e20;
-    border-color: #1b8e20;
-    color: #fff;
-    transition: background-color 0.3s ease;
+    padding: 0 20px;
+    height: 40px;
+    font-size: 16px;
+    background-color: #2a69ad; 
+    color: #ffffff; 
+    border: 2px solid #6367e3; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, border-color 0.3s; 
+}
+
+
+
+.delete-button {
+    padding: 4px 8px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(125, 13, 13);
 }
 
 .edit-button {
-    width: auto;
-    background-color: #1890ff;
-    border-color: #1890ff;
-    color: #fff;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
+    padding: 4px 8px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(7, 83, 121);
 }
 
-.delete-button {
-    width: auto;
-    background-color: #d90909;
-    border-color: #d90909;
-    color: #fff;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
+.edit-button:hover {
+    background-color: #40a9ff;
+    border-color: #40a9ff;
 }
-.color-container {
-    background-color: #ffffff;
+
+.delete-button:hover {
+    background-color: #ff4d4f;
+    border-color: #ff4d4f;
 }
