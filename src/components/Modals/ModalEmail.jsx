@@ -12,7 +12,7 @@ const EmailModal = ({ isVisible, onCancel, loading, setLoading }) => {
         try {
             await usersService.updateEmail(user.readerFound._id, values.email);
             notification.success({
-                message: 'Cambio exitoso',
+                message: 'Cambio exitoso uwu',
                 description: 'El correo electrónico se ha actualizado correctamente. \n Recargue la página para ver los cambios',
             });
             form.resetFields();
