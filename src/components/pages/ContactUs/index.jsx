@@ -1,9 +1,6 @@
 import { useAuth } from "../../../hooks/useAuth";
 import Nav from '../../Nav/index';
-<<<<<<< HEAD
-=======
 import './ContactUs.css';
->>>>>>> e27705ff76040ea927cf974beb3129c156556b95
 
 const ContactUs = () => {
     const { user } = useAuth();
