@@ -1,9 +1,10 @@
-import logo from '../../assets/img/logo-pok.png'
+import logo from '../../assets/img/log.png';
+import './Logo.css';
 
 const LogoNav = () => {
     return (
-        <div className="App">
-            <img src={logo} alt="logo"/>
+        <div className="logo-container">
+            <img src={logo} alt="logo" className="logo-img"/>
         </div>
     );
 }
