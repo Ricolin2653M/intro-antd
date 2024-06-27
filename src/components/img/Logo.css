@@ -1,0 +1,10 @@
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding-left: 10px; /* Ajusta el espaciado según sea necesario */
+}
+
+.logo-img {
+    height: 70px; /* Ajusta el tamaño según sea necesario */
+    width: auto;
+}
