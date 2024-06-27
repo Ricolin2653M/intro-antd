@@ -3,29 +3,32 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: linear-gradient(270deg, #4cbbbc, #1f2120, #1b1f20);
+    background: linear-gradient(270deg, #4cbbbc, #1f2120, #303f42);
     height: 60px;
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
-    
 }
+
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-
-.ant-menu-horizontal > .ant-menu-item {
-    background-color: #f0f0f0; /* Color de fondo de los ítems */
-    color: #000000; /* Color del texto */
+.custom-menu .ant-menu-item {
+    background-color: #91c3ad;
+    color: #ffffff;
+    border-radius: 20px !important; 
+    padding: 5px 15px; 
+    margin-right: 11px; 
+    transition: all 0.3s ease; 
 }
 
-.ant-menu-horizontal > .ant-menu-item:hover {
-    background-color: #0a0202; /* Color de fondo al pasar el ratón */
+.custom-menu .ant-menu-item:hover {
+    background-color: #0a0202; 
 }
 
-.ant-menu-horizontal > .ant-menu-item-selected {
-    background-color: #1890ff; /* Color de fondo del ítem seleccionado */
-    color: #ffffff; /* Color del texto del ítem seleccionado */
+.custom-menu .ant-menu-item-selected {
+    background-color: #1890ff; 
+    color: #ffffff; 
 }

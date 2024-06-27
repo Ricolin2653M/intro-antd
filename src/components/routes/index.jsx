@@ -7,6 +7,8 @@ import { useAuth } from '../../hooks/useAuth.js';
 import Productos from '../pages/Products/index.jsx';
 import FormNewP from '../FormNewProd/index.jsx';
 import FormEditP from '../FormEditProd/index.jsx';
+import AboutOf from '../pages/AboutOf/index.jsx';
+import ContactUs from '../pages/ContactUs/index.jsx';
 
 const AppRoutes = () => {
     const { user } = useAuth();
@@ -17,7 +19,9 @@ const AppRoutes = () => {
         { path: '/Libros', element: <Productos /> },
         { path: '/NewLibro', element: <NewP /> },
         { path: '/nuevoLibro', element: <FormNewP /> },
-        { path: '/editLibro/:id', element: <FormEditP /> }
+        { path: '/editLibro/:id', element: <FormEditP /> },
+        { path: '/acerca de', element: <AboutOf /> },
+        { path: '/Contacto', element: <ContactUs /> },
     ]);
 
     return routes;

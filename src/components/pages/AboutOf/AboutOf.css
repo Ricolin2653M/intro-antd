@@ -1,0 +1,70 @@
+.AboutOf-container {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(254, 254, 254, 0.024), rgba(255, 255, 255, 0.083)), url('../../../assets/img/c.png') no-repeat center center;
+    animation: gradientAnimation 15s ease infinite;
+    background-size: 200% 200%;
+    color: #33475b;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.AboutOf-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 0px ;}
+
+.mission-section {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.mission-section h2 {
+    font-size: 2em;
+    color: #33475b;
+    margin-bottom: 20px;
+}
+
+.mission-section p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #33475b;
+}
+
+.image-content {
+    flex: 1;
+}
+
+.image-content img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.story-section {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.story-section h2 {
+    font-size: 2em;
+    color: #33475b;
+    margin-bottom: 10px;
+}
+
+.story-section p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #33475b;
+    margin-bottom: 30px;
+}
