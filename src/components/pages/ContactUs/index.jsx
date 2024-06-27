@@ -1,5 +1,6 @@
 import { Button } from "antd";
 import { useAuth } from "../../../hooks/useAuth";
+import Nav from '../../Nav/index';
 
 const ContactUs = () => {
     const {user, logout} = useAuth();

@@ -19,7 +19,7 @@ const AppRoutes = () => {
         { path: '/Libros', element: <Productos /> },
         { path: '/NewLibro', element: <NewP /> },
         { path: '/nuevoLibro', element: <FormNewP /> },
-        { path: '/editLibro/:id', element: <FormEditP /> },
+        { path: '/editLibro', element: <FormEditP /> },
         { path: '/acerca de', element: <AboutOf /> },
         { path: '/Contacto', element: <ContactUs /> },
     ]);

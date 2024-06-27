@@ -50,7 +50,7 @@ const FormLogin = () => {
         setLoginError(true);
     }
     return (
-        <div className="login-container">
+        <>
             <Card
                 title="Bienvenido de nuevo"
                 bordered={false}
@@ -60,7 +60,7 @@ const FormLogin = () => {
                     name="normal_login"
                     className="login-form"
                     initialValues={{
-                        remember: false,
+                        remember: true,
                     }}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
@@ -89,14 +89,10 @@ const FormLogin = () => {
                             Iniciar sesión
                         </Button>
                     </Form.Item>
-                    <Button type="primary" size="middle" onClick={() => window.location.href = '/Libros'}>Ver libros</Button>
-                    <br></br>
-                    <br></br>
-
                     ¿Aún no tienes cuenta? <a href="/register">Registrate</a>
                 </Form>
             </Card>
-        </div>
+        </>
     );
 }
 

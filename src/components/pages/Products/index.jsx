@@ -94,7 +94,7 @@ const Productos = () => {
     }, []);
 
     const handleEdit = (record) => {
-        navigate(`/editLibro/${record._id}`);
+        navigate('/editLibro', { state: { id: record._id } });
     };
 
     const handleDelete = async (record) => {
